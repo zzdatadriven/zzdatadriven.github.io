@@ -4,12 +4,11 @@ title: "About"
 permalink: /about/
 weight: 3
 ---
-{% include landing.html %}
 
 # **About Me**
 
 Hi, I am **{{ site.author.name }}** :wave:,<br>
-Data Scientist. [Resume](https://docs.google.com/document/d/1fGWn-KhfxWK-BLcwFPs5UFRZdUEeyoefi2WtKozr8hM/edit#heading=h.wj0puh61kxsr) 
+Data Scientist.
 
 <div class="row">
 {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
