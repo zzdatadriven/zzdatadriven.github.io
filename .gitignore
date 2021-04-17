@@ -1,0 +1,8 @@
+# Ruby Gems
+*.gem
+
+# Design Files
+*.psd
+*.ai
+.Rproj.user
+*.Rproj
