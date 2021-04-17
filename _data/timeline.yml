@@ -1,55 +1,10 @@
-- title: Student, Statistics and Government at Harvard College
-  from: September 2018
-  to: December 2022
-  description: "Joint Concentration in Statistics and Government. Secondary in Global Health  and Health Policy. 
-                Harvard Government Department Research & Course Assistant. Harvard Open Data Project 
-                Contributor. Eating Concerns Hotline & Outreach (ECHO) Peer Counselor. Memorial 
-                Church Student Advisory Board Member. Student-Faculty Committee on Dining 
-                Representative. Leadership Institute of Harvard College Finance and Communications 
-                Chair. Smart Woman Securities Associate."
-                
-- title: Undergraduate Research Scholar, Harvard Insitute for Quantitative Social Sciences
-  from: January 2021
-  to: present
-  description: "As part of the partisan segregation project, I match voter file lists with election 
-                data as part of a larger project that measures and maps 
-                segregation between partisans at any level of geography in the United States.
-                This project allows me to expand upon my existing data wrangling, web scraping, 
-                and other big data skills in R."
+- title: DePaul University, Master's in Data Science
+  from: January 2019
+  to: March 2021
+  description: "learned programming and more about numbers."         
 
-- title: Course Assistant, GOV 50 Data
-  from: August 2020
-  to: present
-  description: "GOV 50: Data teaches students introductory data science skills using R tidyverse. 
-                The course culminates in a large final project where students create Shiny apps to 
-                display their own analysis of a large dataset that they sourced and cleaned. As a 
-                Mindich Course Fellow in Fall 2020, I connected students with policymakers, nonprofits, 
-                or other stakeholders to maximize the impact of their work. In addition to my unique 
-                roles for the fellowship program, I also provided assistance in lectures and held 
-                regular office hours."
-                
-- title: Summer Analyst, Vista Equity Partners
-  from: June 2020
-  to: August 2020
-  description: "In this role, I spent a large portion of my time preparing research and 
-                materials for the senior investor relations and management team members for strategic 
-                initiatives. On top of that, I prepared investor profiles, agendas, and any additional 
-                research and briefing documentation required in advance of meetings. Since Vista invests 
-                exclusively in enterprise software, I also performed supplementary research on the 
-                technology and software industry and find macroeconomic data for the Quarterly Investor Letter."
-
-- title: Customer and Prospect Database Intern, Social Solutions Global
-  from: September 2019
-  to: January 2020
-  description: "My work centered itself around researching high-potential markets, competitors, and existing 
-                clients to help the company identify unmet needs and improve our products. I summarized these 
-                findings in internal research reports for the Senior Leadership Team.
-
-                While my job description focused on market research, I also worked with the Product and Data 
-                Science teams to merge, clean, and analyze client datasets. I primarily used R when working 
-                with the large datasets, but occasionally used Excel for less intensive tasks.
-
-                In addition to the research and data components of my role, I also maintained internal 
-                databases to ensure that our Sales, Product, and Marketing teams could seamlessly access any 
-                relevant information."
+- title: Weber State University, Bachelor's in International Economics   
+  from: September 2015
+  to: April 2018
+  description: "At WSU, I was attracted by the magics of numbers, which is why I decided later to focus mainly on dealing data."
               
