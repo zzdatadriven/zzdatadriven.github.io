@@ -1,23 +1,27 @@
-- name: R
-  percentage: 95
+- name: Python 
+  percentage: 80
   color: success
 
-- name: Python
-  percentage: 40
+- name: SQL
+  percentage: 80
   color: info
 
-- name: C
-  percentage: 40
+- name: Tableau
+  percentage: 80
   color: danger
 
-- name: HTML
-  percentage: 25
+- name: R
+  percentage: 30
   color: warning
   
-- name: CSS
-  percentage: 25
+- name: Pandas 
+  percentage: 70
   color: warning
   
-- name: JS
-  percentage: 25
+- name: Scikit-learn 
+  percentage: 70 
+  color: warning
+
+- name: Matplotlib
+  percentage: 70 
   color: warning
