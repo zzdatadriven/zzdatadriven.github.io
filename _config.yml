@@ -1,9 +1,9 @@
 ### Site Settings ###
-title               : Kayla Manning
+title               : Zhong Zhong
 description         : >-
-                      Statistics & Government // Harvard 2022
+                      耐心 & 努力奋斗
 baseurl             : ""                     
-repository          : kayla-manning/kayla-manning.github.io   
+repository          : zzdatadriven/zzdatadriven.github.io  
 remote_theme        : YoussefRaafatNasry/portfolYOU
 
 
