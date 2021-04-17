@@ -1,5 +1,5 @@
 - name: Python 
-  percentage: 80
+  percentage: 70
   color: success
 
 - name: Pandas 
@@ -11,7 +11,7 @@
   color: success 
 
 - name: Matplotlib
-  percentage: 70 
+  percentage: 60 
   color: success 
 
 - name: SQL
@@ -25,3 +25,4 @@
 - name: R
   percentage: 30
   color: warning
+  
