@@ -1,9 +1,11 @@
 ### Site Settings ###
 title               : Zhong Zhong
 description         : >-
-
-                      道常无为而无不为。 -- 老子
-baseurl             : ""                     
+                      <br/>
+                      <strong>道常无为而无不为。 -- 老子</strong>
+                      <br/>
+                      <strong> Data Analyst -->>> Data Engineer </strong> 
+baseurl             : ""                      
 repository          : zzdatadriven/zzdatadriven.github.io  
 remote_theme        : YoussefRaafatNasry/portfolYOU
 
