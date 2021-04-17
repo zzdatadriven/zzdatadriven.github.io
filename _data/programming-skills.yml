@@ -2,6 +2,18 @@
   percentage: 80
   color: success
 
+- name: Pandas 
+  percentage: 70
+  color: success
+
+- name: Scikit-learn 
+  percentage: 70 
+  color: success 
+
+- name: Matplotlib
+  percentage: 70 
+  color: success 
+
 - name: SQL
   percentage: 80
   color: info
@@ -12,16 +24,4 @@
 
 - name: R
   percentage: 30
-  color: warning
-  
-- name: Pandas 
-  percentage: 70
-  color: warning
-  
-- name: Scikit-learn 
-  percentage: 70 
-  color: warning
-
-- name: Matplotlib
-  percentage: 70 
   color: warning
