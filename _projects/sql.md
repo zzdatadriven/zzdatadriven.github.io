@@ -4,6 +4,14 @@ tools: [SQL]
 image: https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80
 description: I tried to answer all the SQL query questions on LeetCode in order to refresh my skills. 
 ---
+# **LeetCode**
+[[175] :heavy_check_mark:](#question-175-combine-two-cables)
+[[176] :heavy_check_mark:](#question-176-second-highest-salary)
+[[177] :heavy_check_mark:](#question-177-nth-highest-salary)
+[[178] :question:](#question-178-rank-scores)
+[[180] :heavy_check_mark:](#question-180-consecutive-numbers)
+[[181] :heavy_check_mark:](#question-181-employees-earning-more-than-their-managers)
+
 # Question 175: Combine Two Tables
 
 **Person:**
@@ -71,7 +79,7 @@ ORDER BY salary DESC
 LIMIT N-1 OFFSET 1; 
 ```
 
-# Question  178: Rank Scores
+# Question 178: Rank Scores 
 
 Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no "holes" between ranks.
 
@@ -122,7 +130,6 @@ Write a SQL query to find all numbers that appear at least three times consecuti
 
 For example, given the above **Logs** table,1is the only number that appears consecutively for at least three times.
 
-+-----------------+
 | ConsecutiveNums |
 |-----------------|
 | 1               |
@@ -134,7 +141,6 @@ FROM logs as l1 join logs as l2
      JOIN logs l3 
      ON l3.id -1 = l2.id AND l3.num = l2.num;  
 ``` 
-
 
 # Question 181: Employees Earning More Than Their Managers
 
