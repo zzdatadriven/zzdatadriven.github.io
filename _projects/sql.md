@@ -5,7 +5,7 @@ image: https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixid=MnwxMjA
 description: I tried to answer all the SQL query questions on LeetCode in order to refresh my skills. 
 ---
 # **LeetCode**
-[[175] :heavy_check_mark:](#question-175-combine-two-cables)
+[[175] :heavy_check_mark:](#question-175-combine-two-tables)
 [[176] :heavy_check_mark:](#question-176-second-highest-salary)
 [[177] :heavy_check_mark:](#question-177-nth-highest-salary)
 [[178] :question:](#question-178-rank-scores)
