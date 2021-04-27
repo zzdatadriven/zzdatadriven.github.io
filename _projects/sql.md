@@ -12,6 +12,199 @@ description: I tried to answer all the SQL query questions on LeetCode in order 
 [[180] :heavy_check_mark:](#question-180-consecutive-numbers)
 [[181] :heavy_check_mark:](#question-181-employees-earning-more-than-their-managers)
 
+# Question : Reported posts 
+
+``` sql 
+SELECT extra as report_reason, count(distinct post_id) as count_post 
+FROM actions 
+WHERE action_date = '2019-07-04' AND action = 'report' 
+GROUP BY extra
+```
+
+# Question : Sales Analysis 1
+
+``` sql
+SELECT s.seller_id, SUM(p.unit*s.quantity) as total_sales 
+FROM sales as s JOIN product as p 
+     ON s.product_id = p.product_id 
+GROUP BY s.seller_id
+ORDER BY SUM(p.unit*s.quantity) DESC
+LIMIT 1; 
+
+--i just relize, no need join here, sum price and reorder it. 
+```
+
+# Question : Sales Analysis 2   
+
+``` sql
+--????? 
+WITH t as (
+    SELECT * 
+    FROM sale as s inner join product as p 
+         ON s.product_id = p.product_id
+)
+
+SELECT 
+FROM t as t1 JOIN t as t2 
+     ON t1.product_id = t2.production_id 
+     AND t.production
+     
+```
+
+# Question : Sales Analysis 3 
+
+``` sql
+SELET DISTINCT p.product_id, product_name 
+FROM product as p INNER JOIN sales as s 
+     ON p.product_id = s.product_id 
+WHERE s.sale_date BETWEEN ('2019-01-01', '2019-03-31'); 
+``` 
+
+# Question : Sales Person 
+
+
+# Question : Shortest Distance 
+
+``` sql 
+SELECT min(abs(abs(p1.x) - abs(p2.x))) as minimum  
+FROM points as p1 INNER JOIN points as p2
+     ON p1.x <> p2.x; -- since no duplicated values in x. 
+```
+
+
+# Question : Students and Examinations 
+
+``` sql
+--??????????? 
+SELECT s.student_id, s.student_name, e.subject_name, IFNULL(count(*), 0) as attended_exams
+FROM (SELECT * FROM students CROSS JOIN subjects) as s 
+     LEFT JOIN examinations as e  
+     ON s.student_id = e.student_id AND s.subject_name = e.subject_name
+GROUP BY s.student_id, e.subject_name;
+```
+
+# Question : Students with invalid departments 
+
+``` sql 
+-- left join
+SELECT students.id, students.name
+FROM students LEFT JOIN departments 
+     ON students.department_id = departments.id
+WHERE departments.id IS NULL;   
+
+-- subquery 
+SELECT id, name 
+FROM students 
+WHERE department_id NOT IN (SELECT id FROM departments); 
+```
+
+# Question : Swap Salary 
+
+``` sql 
+UPDATE 
+SET sex = CASE WHEN 'm' THEN 'f'
+          ELSE 'm'
+          END; 
+```
+
+# Question : Triangle Judgment 
+
+| x  | y  | z  |
+|----|----|----|
+| 13 | 15 | 30 |
+| 10 | 20 | 15 |
+
+``` sql 
+SELECT x, y, z
+       CASE 
+           WHEN x+y > z and x+z > y and z+y > x THEN 'YES'
+           ELIF x = z AND z = y THEN 'YES'
+           ELSE 'NO'
+       END AS triangle
+FROM triangle; 
+```
+
+# Question : Top Travelers 
+
+Write an SQL query to report the distance traveled by each user. 
+
+``` sql
+SELECT users.name, IFNULL(sum(rides.distance), 0) AS distince_traveled,  
+FROM users LEFT JOIN rides
+     ON users.id = rides.user_id 
+GROUP BY users.id
+ORDER BY 2, 1;  
+```
+
+# Question 1141: User activity for past 30 days 1
+
+Write an SQL query to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on some day if he/she made at least one activity on that day.
+
+**Activity table:**
+
+| user_id | session_id | activity_date | activity_type |
+|---------|------------|---------------|---------------|
+| 1       | 1          | 2019-07-20    | open_session  |
+| 1       | 1          | 2019-07-20    | scroll_down   |
+| 1       | 1          | 2019-07-20    | end_session   |
+| 2       | 4          | 2019-07-20    | open_session  |
+| 2       | 4          | 2019-07-21    | send_message  |
+| 2       | 4          | 2019-07-21    | end_session   |
+| 3       | 2          | 2019-07-21    | open_session  |
+| 3       | 2          | 2019-07-21    | send_message  |
+| 3       | 2          | 2019-07-21    | end_session   |
+| 4       | 3          | 2019-06-25    | open_session  |
+| 4       | 3          | 2019-06-25    | end_session   |
+
+**Results:** 
+
+| day        | active_users |
+|------------|--------------|
+| 2019-07-20 | 2            |
+| 2019-07-21 | 2            |
+
+``` sql
+SELECT activity_data, COUNT(distinct user_id) 
+FROM activity
+WHERE activity BETWEEN (DATE_ADD('2019-07-27',INTERVAL -30 DAY), '2019-07-27')
+GROUP BY activity_date 
+HAVING COUNT(DISTINCT user_id) > 0; 
+```
+
+# Question : User activity for past 30 days 2 
+
+Write an SQL query to find the average number of sessions per user for a period of 30 days ending 2019-07-27 inclusively, rounded to 2 decimal places. The sessions we want to count for a user are those with at least one activity in that time period.
+
+**Activity table:**
+
+| user_id | session_id | activity_date | activity_type |
+|---------|------------|---------------|---------------|
+| 1       | 1          | 2019-07-20    | open_session  |
+| 1       | 1          | 2019-07-20    | scroll_down   |
+| 1       | 1          | 2019-07-20    | end_session   |
+| 2       | 4          | 2019-07-20    | open_session  |
+| 2       | 4          | 2019-07-21    | send_message  |
+| 2       | 4          | 2019-07-21    | end_session   |
+| 3       | 2          | 2019-07-21    | open_session  |
+| 3       | 2          | 2019-07-21    | send_message  |
+| 3       | 2          | 2019-07-21    | end_session   |
+| 4       | 3          | 2019-06-25    | open_session  |
+| 4       | 3          | 2019-06-25    | end_session   |
+
+**Results:** 
+
+| average_sessions_per_user |
+|---------------------------| 
+| 1.33                      |
+
+``` sql
+SELECT AVG(counts) as average_session_per_user FROM (
+    SELECT COUNT(session_id) as counts, usr_id  
+    FROM activity 
+    WHERE activity_date between (DATE_ADD('2019-07-27', INTERVAL -30 DAY), '2019-07-27')
+    GROUP BY user_id) AS a; 
+```
+
 # Question 175: Combine Two Tables
 
 **Person:**
@@ -311,6 +504,5 @@ Given a **Weather** table, write a SQL query to find all dates' Ids with higher 
 SELECT today.data 
 FROM weather as today INNER JOIN weather as yesterday 
      ON DATEDIFF(today.date, yesterday.date) = 1 
-     AND today.date > yesterday.date 
 WHERE today.temperature > yesterday.temperature; 
 ```
