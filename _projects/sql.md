@@ -12,6 +12,85 @@ description: I tried to answer all the SQL query questions on LeetCode in order 
 [[180] :heavy_check_mark:](#question-180-consecutive-numbers)
 [[181] :heavy_check_mark:](#question-181-employees-earning-more-than-their-managers)
 
+# Question : List the products ordered in a period
+
+``` sql 
+SELECT p.product_name, o.unit
+FROM orders as o JOIN products as p 
+     ON o.product_id = p.product_id 
+WHERE o.order_date BETWEEN ('2020-2-1', '2020-2-28') 
+      AND o.unit >= 100;  
+```
+
+# Question : Not Boring movies 
+
+``` sql 
+SELECT id, movie, description, rating   
+FROM cinema
+WHERE id%2 = 1  AND description <> 'boring'; 
+```
+
+# Question : Number of comments per post 
+
+``` sql 
+SELECT s1.sub_id as post_id, COUNT(DISTINCT s2.parent_id) as num_of_comment  
+FROM submission as s1 JOIN submission as s2 
+     ON s1.sub_id = s2.parent_id 
+GROUP BY s1.sub_id  
+```
+-- | 4            | 2020-03-04   | 30       |
+--
+# Question : Product Sales Analysis 1 
+
+``` sql 
+SELECT p.product_name, s.year, s.price  
+FROM sales as s JOIN product as p 
+     ON s.product_id = p.product_id 
+```
+
+# Question : Product Sales Analysis 2
+
+``` sql 
+SELECT p.product_id, sum(s.quantity) as total_quantity 
+FROM product as p LEFT JOIN sales as s
+     ON p.product_id = s.product_id 
+GROUP BY product_id
+```
+
+# Question : Project Employees 1 
+
+
+# Question : Project Employees 2 
+
+``` sql
+SELECT project_id
+FROM ( 
+    SELECT project_id, count(employee_id) as num_emp   
+    FROM project 
+    GROUP BY project_id
+    ORDER BY count(employee_id) DESC) as t
+WHERE 
+``` 
+
+
+# Question : Queries quality and percentage
+
+# Question : Reformat department table 
+
+``` sql
+-- PIVOT???? 
+SELECT 
+FROM
+```
+
+# Question : Replace employee id with unique identifier 
+
+``` sql
+SELECT em.unique_id, e.name 
+FROM employees as e LEFT JOIN employeeuni as em 
+     ON e.id = em.id
+```
+
 # Question : Reported posts 
 
 ``` sql 
