@@ -37,7 +37,7 @@ Highlight table consists of one or more dimensions and **exactly one measure** (
 
 Heat map are a visualization where marks on a chart are represented as colors. As the marks heat up due to their higher values and density of records, a intense color is displayed. It is similar to highlight table, only heat map can include two measures. 
 
-![heat map](tableau/heat%20map.png)
+![heat map](/tableau/heat%20map.png)
 
 ### [**Dual-Axis Combination Chart**]() 
 
@@ -51,8 +51,16 @@ A visualization that helps understand how positive and negative values of dimens
 
 ![Water Fall Chart](/tableau/water_fall_chart.png)
 
+### [**Scatter**]()
 
+Scatter plot is a visualization that displays the relationship between two measures, in addition to that, up to three measures and/or dimensions can be leveraged with the color and/or size and/or shape marks. 
 
+![](/tableau/scatter%20plot.png)
 
+## [**Tree Map**]() 
 
+Tree map is a visualization that nests rectangles in heirarchies so we can compare different dimension combinations across one or two measures (one for size and one for color) and quickly interpret their respective contributions to the whole. 
 
+![](/tableau/tree%20map%20.png)
+
+## [**Sparklines**]()

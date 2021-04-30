@@ -12,6 +12,68 @@ description: I tried to answer all the SQL query questions on LeetCode in order 
 [[180] :heavy_check_mark:](#question-180-consecutive-numbers)
 [[181] :heavy_check_mark:](#question-181-employees-earning-more-than-their-managers)
 
+# Question : Employee Bonus 
+
+``` sql 
+SELECT 
+FROM employee as e LEFT JOIN bonus as b 
+     ON e.empid = b.empid 
+WHERE b.bonus < 1000 or b.bonus IS NULL; 
+```
+
+# Question : Find Customer Referee 
+
+``` sql 
+SELECT name
+FROM customer 
+WHERE referee_id != 2 or referee IS NULL; 
+```
+
+# Question : Find the team size 
+
+``` sql 
+SELECT e.employee_id as employee_id, t.team_size as time_size 
+FROM employee as e JOIN (SELECT team_id, COUNT(*) as team_size FROM employee GROUP BY                                team_id) as t
+     ON e.team_id = t.team_id
+```
+
+# Question : Friend Requests 1 
+
+# Question : Friendly Movies streamed list   
+
+``` sql 
+SELECT DISTINCT c.title as title 
+FROM TVProgram as t JOIN content as c 
+     ON t.content_id = c.content_id 
+WHERE t.program_date BEWTEEN ('2020-06-01', '2020-06-30')
+      AND c.content_type = 'Movies'
+      AND c.kids_content = 'Y'; 
+```
+
+# Question : Game Play Analysis 1 
+
+
+# Question : Game play analysis 2 
+
+
+# Question : Group sold products by the date 
+
+Write an SQL query to find for each date, the number of distinct products sold and their names. 
+
+``` sql 
+SELECT sell_date, COUNT(DISTINCT product), GROUP_CONCAT(DISTINCT product) as products    
+FROM activities 
+GROUP BY sell_date;  
+```
+
+# Question : Immediate food delivery 
+
+``` sql 
+SELECT ROUND(COUNT(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE O                 END)/COUNT(*), 2) as immediate_percentage
+FROM delivery 
+GROUP BY delivery_id;  
+```
+
 # Question : List the products ordered in a period
 
 ``` sql 
@@ -38,7 +100,7 @@ FROM submission as s1 JOIN submission as s2
      ON s1.sub_id = s2.parent_id 
 GROUP BY s1.sub_id  
 ```
--- | 4            | 2020-03-04   | 30       |
+
 --
 # Question : Product Sales Analysis 1 
 
