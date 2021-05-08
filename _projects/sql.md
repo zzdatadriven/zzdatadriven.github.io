@@ -5,23 +5,350 @@ image: https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixid=MnwxMjA
 description: I tried to answer all the SQL query questions on LeetCode in order to refresh my skills. 
 ---
 # **LeetCode**
+Easy: 
 [[175] :heavy_check_mark:](#question-175-combine-two-tables)
 [[176] :heavy_check_mark:](#question-176-second-highest-salary)
 [[177] :heavy_check_mark:](#question-177-nth-highest-salary)
 [[178] :question:](#question-178-rank-scores)
 [[180] :heavy_check_mark:](#question-180-consecutive-numbers)
 [[181] :heavy_check_mark:](#question-181-employees-earning-more-than-their-managers)
+[[182] :heavy_check_mark:](#question-182-duplicate-emails)
+[[183] :heavy_check_mark:](#question-183-customers-who-never-order)
+[[196] :heavy_check_mark:](#question-196-delete-duplicate-emails)
+[[197] :heavy_check_mark:](#question-197-rising-temperature)
+[[511] :heavy_check_mark:](#question-511-game-play-analysis-1)
+[[512] :heavy_check_mark:](#question-512-game-play-analysis-2)
+[[577] :heavy_check_mark:](#question-577-employee-bonus) 
+[[584] :heavy_check_mark:](#question-584-find-customer-referee)
+[[586] :heavy_check_mark:](#question-586-customer-placing-the-largest-number-of-orders)
+[[595] :heavy_check_mark:](#question-595-big-countries)
+[[596] :heavy_check_mark:](#question-596-classes-more-than-5-students) 
+[[597] :heavy_check_mark:](#question-597-friend-requests-1)
+[[603] :heavy_check_mark:](#question-603-consecutive-available-seats)
+[[607] :heavy_check_mark:](#question-607-sales-person) 
+[[610] :heavy_check_mark:](#question-610-triangle-judgement) 
+[[613] :heavy_check_mark:](#question-613-shortest-distance-in-a-line)
+[[619] :heavy_check_mark:](#question-619-biggest-single-number)
+[[620] :heavy_check_mark:](#question-620-not-boring-movies)
+[[627] :heavy_check_mark:](#question-627-swap-salary)
+[[1050] :heavy_check_mark:](#question-1050-actors-who-cooperated-with-directors-at-least-three-times)
+[[1068] :heavy_check_mark:](#question-1068-product-sales-analysis-1)
+[[1069] :heavy_check_mark:](#question-1069-product-sales-analysis-2)
+[[1075] :heavy_check_mark:](#question-1075-project-employees-1)
+[[1076] :heavy_check_mark:](#question-1076-project-employees-2)
+[[1082] :heavy_check_mark:](#question-1082-sales-analysis-1)
+[[1083] :heavy_check_mark:](#question-1083-sales-analysis-2)
+[[1084] :heavy_check_mark:](#question-1084-sales-analysis-3)
+[[1113] :question:](#question-1113-number-of-comments-per-post)
+[[1141] :heavy_check_mark:](#question-1141-user-activity-for-past-30-days-1)
+[[1142] :heavy_check_mark:](#question-1142-user-activity-for-past-30-days-2)
+[[1148] :heavy_check_mark:](#question-1148-article-views-1)
+[[1173] :heavy_check_mark:](#question-1173-immediate-food-delivery)
+[[1179] :confused:](#question-1179-reformat-department-table)
+[[1121] :confused:](#question-1121-queries-quality-and-percentage)
+[[1241] :question:](#question-1241-number-of-comments-per-post)
+[[1251]](#question-1251-average-selling-price)
+[[1280]](#question-1280-students-and-examinations)
+[[1294]](#question-weather-type-in-each-country)
 
-# Question : Employee Bonus 
+Medium: 
+
+------------------------------------------------------------------------------------------------
+
+# Question 1294: Weather type in each country 
+
+
+# Question : Highest grade for each student 
+
+
+# Question : Get the second most recent activity 
 
 ``` sql 
-SELECT 
+
+```
+
+# Question 603: Consecutive available seats
+
+``` sql 
+SELECT DISTINCT c1.seat_id 
+FROM cinema as c1 LEFT JOIN cinema as c2 
+     ON c1.seat_id = c2.seat_id - 1
+WHERE c1.free = 1 AND c2.free = 1
+ORDER BY 1; 
+```
+
+# Question : Get highest answer rate question
+
+``` sql 
+
+```
+
+# Question : Game Play Analysis 4
+
+``` sql 
+WITH t as (SELECT t1.player_id as id, COUNT(t2.event_date) as count_consecutive_days
+FROM activity as t1 LEFT JOIN activity as t2 
+     ON date_add(t1.event_date, INTERVAL 1 DAY) = t2.event_date
+GROUP BY t1.player_id)
+SELECT ROUND(COUNT(count_consecutive_days)/COUNT(*), 2) as fraction
+FROM t 
+WHERE count_consecutive_days > 0
+```
+
+# Question : Game Play Analysis 3
+
+``` sql
+-- cumulative sum 
+SELECT player_id,
+       event_date,
+       sum(games_played) over (partition by player_id order by event_date) as games_played_so_far
+FROM activity
+ORDER BY 1, 2;  
+```
+
+# Question : Friend Requests 2 
+
+``` sql
+SELECT id, MAX(COUNT(DISTINCT friend)) as num_friends
+FROM 
+    (SELECT request_id as id, accepter_id as friend  
+    FROM request_accepted
+    UNION ALL 
+    SELECT accepter_id as id, request_id as friend 
+    FROM request_accepted) as t 
+GROUP BY id 
+```
+
+# Question : Find the start and end number of continuous ranges 
+
+``` sql 
+
+```
+
+# Question : Exchange Seats 
+
+``` sql 
+
+```
+
+# Question : Evaluate Boolean Expressions 
+
+``` sql 
+```
+
+# Question : Department Highest Salary 
+
+# Question : Customers who bought all products 
+
+# Question : Customers who bought a, b but not c 
+
+``` sql 
+
+```
+
+# Question : Countries you can safely invest in 
+
+``` sql 
+  
+```
+
+# Question : Count student number in departments 
+
+``` sql 
+SELECT d.dept_name, COUNT(s.student_id)
+FROM department as d LEFT JOIN student as s 
+     ON d.dept_id = s.dept_id 
+GROUP BY d.dept_id
+ORDER BY COUNT(s.student_id) DESC, d.dept_name; 
+```
+# Question : Consecutive Numbers
+
+``` sql 
+SELECT DISTINCT l1.id 
+FROM logs l1 JOIN logs l2 
+     ON l1.num = l2.num AND l2.id = l3.id - 1 
+     JOIN logs l3 
+     ON l2.num = l3.num AND l2.id = l3.id - 1; 
+```
+
+# Question : Capital Gain 
+
+
+# Question : Calculate Salaries
+
+``` sql 
+WITH tax_rates as (
+    SELECT company_id, 
+           CASE WHEN max_sal < 1000 THEN 0 
+                ELIF max_sal >= 1000 AND max_sal <= 10000 THEN 0.24 
+                ELSE 0.49
+           END as rates     
+    FROM (SELECT company_id, max(salary) as max_sal FROM salaries GROUP BY company_id) as t) 
+SELECT s.company_id, s.employee_id, s.employee_name, (s.salary*(1-t.rates)) as salary 
+FROM salaries as s JOIN tax_rates as t 
+     ON s.company_id = t.company_id 
+```
+# Question 1148: Article Views 1 
+
+# Question : Article Views 2 
+
+``` sql 
+SELECT DISTINCT viewer_id as id 
+FROM 
+    (SELECT view_date, viewer_id 
+    FROM views 
+    GROUP BY view_date, viewer_id 
+    HAVING COUNT(DISTINCT article_id) > 1) at t; 
+```
+
+# Question : Apples & Oranges 
+
+``` sql 
+SELECT COALESCE(a.sale_date, o.sale_date) as sale_date, 
+       (IFNULL(a.sold_num, 0) - IFNULL(o.sold_num, 0)) as diff
+FROM (SELCT * from sales where fruit = 'apples') as a 
+     OUTTER JOIN 
+     (SELECT * FROM sales WHERE fruit = 'orange') as o 
+     ON a.sale_date = o.sale_date; 
+ORDER BY 1; 
+``` 
+
+# Question : All people report to the given manager 
+
+# Question : Activity Participants 
+
+``` sql 
+with t as (SELECT a.name as activity, COUNT(*) as counts 
+FROM activities as a LEFT JOIN friends as f 
+     ON a.name = f.activity 
+GROUP BY a.name) 
+SELECT activity
+FROM t 
+WHERE t.counts NOT IN (SELECT max(counts), min(counts) FROM t); 
+``` 
+
+# Question : Active Businesses 
+
+``` sql 
+SELECT DISTINCT business_id
+FROM events as e INNER JOin (SELECT event_type, avg(occurances) as avg_occ 
+                        FROM event_type 
+                        GROUP BY event_type) as t 
+     ON e.event_type = t.event_type 
+WHERE e.occurances > t.avg_occ; 
+```
+
+# Question : Active Users 
+
+``` sql 
+WITH temp (SELECT DISTINCT t1.id  
+FROM logins t1 JOIN logins t2 
+     ON t2.login_date = DATE_ADD(t1.login_date, INTERVAL +1 DAY) AND t2.id = t1.id  
+     JOIN logins t3 
+     ON t3.login_date = DATE_ADD(t2.login_date, INTERVAL +1 DAY) AND t3.id = t2.id  
+     JOIN logins t4 
+     ON t4.login_date = DATE_ADD(t3.login_date, INTERVAL +1 DAY) AND t4.id = t3.id  
+     JOIN logins t5 
+     ON t5.login_date = DATE_ADD(t4.login_date, INTERVAL +1 DAY) AND t5.id = t4.id) 
+SELECT t.id as id, a.name as name 
+FROM accounts as a JOIN t 
+     ON a.id = t.id
+ORDER BY t.id; 
+```
+----------------------------------------------------------------------------------------
+
+# Question 1050: Actors who cooperated with Directors at least three times 
+
+``` sql 
+SELECT actor_id, director_id 
+FROM actirdirector 
+GROUP BY actor_id, director_id
+HAVING COUNT(*) >= 3; 
+``` 
+
+# Question 1251: Average selling price
+
+# Question 595: Big Countries 
+
+``` sql
+SELECT name, population, area
+FROM world 
+WHERE area > 3,000,000 or population > 25,000,000; 
+``` 
+
+# Question 619: Biggest Single number 
+
+``` sql
+SELECT MAX(num)
+FROM 
+    (SELECT num 
+    FROM numbers
+    GROUP BY num
+    HAVING COUNT(num) = 1) as t;  
+```
+
+# Question 596: Classes more than 5 students 
+
+``` sql 
+SELECT class
+FROM classes 
+GROUP BY class 
+HAVING COUNT(DISTINCT student) >= 5;  
+``` 
+
+# Question : Create Session bar chart 
+
+``` sql 
+WITH t as (SELECT 
+            CASE WHEN duration/60 >= 0 and duration/60 < 5 THEN '[0-5>'
+                 ELIF duration/60 >= 5 AND duration/60 < 10 THEN '[5, 10>'
+                 ELIF duration/60 >= 10 AND duration/60 < 15 THEN '[10, 15>'
+                 ELSE '15 minutes or more'  
+            END as bin 
+           FROM sessions) 
+SELECT bin, COUNT(*) as total 
+FROM t 
+GROUP BY bin; 
+``` 
+
+# Question 586: Customer placing the largest number of orders
+
+``` sql 
+SELECT customer_name
+FROM orders 
+GROUP BY customer_number 
+ORDER BY COUNT(order_number) 
+LIMIT 1; 
+```
+
+# Question : Delete duplicate emails 
+
+``` sql 
+DELETE FROM person 
+WHERE id NOT IN (SELECT MIN(id)
+                 FROM person
+                 GROUP BY email); 
+``` 
+
+# Question 182: Duplicate Emails 
+
+``` sql 
+SELECT email 
+FROM person 
+GROUP BY email 
+HAVING COUNT(email) > 1; 
+```
+
+# Question 577: Employee Bonus 
+
+``` sql 
+SELECT e.name as name, b.bonus as bonus-+
 FROM employee as e LEFT JOIN bonus as b 
      ON e.empid = b.empid 
 WHERE b.bonus < 1000 or b.bonus IS NULL; 
 ```
 
-# Question : Find Customer Referee 
+# Question 584: Find Customer Referee 
 
 ``` sql 
 SELECT name
@@ -37,7 +364,12 @@ FROM employee as e JOIN (SELECT team_id, COUNT(*) as team_size FROM employee GRO
      ON e.team_id = t.team_id
 ```
 
-# Question : Friend Requests 1 
+# Question 597: Friend Requests 1 
+
+``` sql 
+SELECT 
+FROM 
+```
 
 # Question : Friendly Movies streamed list   
 
@@ -50,11 +382,28 @@ WHERE t.program_date BEWTEEN ('2020-06-01', '2020-06-30')
       AND c.kids_content = 'Y'; 
 ```
 
-# Question : Game Play Analysis 1 
+# Question 511: Game Play Analysis 1 
 
+``` sql 
+SELECT player_id, min(event_date)
+FROM activity 
+GROUP BY player_id 
+ORDER BY 1; 
+```
 
-# Question : Game play analysis 2 
+# Question 512: Game play analysis 2 
 
+``` sql 
+-- return the first login dates for each player 
+SELECT ROUND(COUNT(t.event_date)/COUNT(*), 2) as fraction
+FROM 
+    (SELECT player_id, min(event_date) as event_date   
+    FROM activity 
+    group by player_id) as t 
+    LEFT JOIN activity as a
+    ON DATE_ADD(a.event_date, INTERVAL - 1) = t.event_date -- is ok??? 
+GROUP BY player_id 
+```
 
 # Question : Group sold products by the date 
 
@@ -66,7 +415,8 @@ FROM activities
 GROUP BY sell_date;  
 ```
 
-# Question : Immediate food delivery 
+# Question 1173: Immediate food delivery
+
 
 ``` sql 
 SELECT ROUND(COUNT(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE O                 END)/COUNT(*), 2) as immediate_percentage
@@ -84,7 +434,7 @@ WHERE o.order_date BETWEEN ('2020-2-1', '2020-2-28')
       AND o.unit >= 100;  
 ```
 
-# Question : Not Boring movies 
+# Question 620: Not Boring movies 
 
 ``` sql 
 SELECT id, movie, description, rating   
@@ -92,7 +442,7 @@ FROM cinema
 WHERE id%2 = 1  AND description <> 'boring'; 
 ```
 
-# Question : Number of comments per post 
+# Question 1241: Number of comments per post 
 
 ``` sql 
 SELECT s1.sub_id as post_id, COUNT(DISTINCT s2.parent_id) as num_of_comment  
@@ -101,8 +451,18 @@ FROM submission as s1 JOIN submission as s2
 GROUP BY s1.sub_id  
 ```
 
---
-# Question : Product Sales Analysis 1 
+``` sql 
+SELECT a.sub_id, COALESCE(COUNT(DISTINCT s.parent_id), 0) as number_of_comments 
+FROM 
+    (SELECT * 
+    FROM submissions 
+    WHERE parent_id IS NULL) as a 
+    LEFT JOIN submissions as s
+    ON a.sub_id = s.parent_id 
+GROUP BY a.sub_id; 
+```
+
+# Question 1068: Product Sales Analysis 1 
 
 ``` sql 
 SELECT p.product_name, s.year, s.price  
@@ -110,7 +470,7 @@ FROM sales as s JOIN product as p
      ON s.product_id = p.product_id 
 ```
 
-# Question : Product Sales Analysis 2
+# Question 1069: Product Sales Analysis 2
 
 ``` sql 
 SELECT p.product_id, sum(s.quantity) as total_quantity 
@@ -119,10 +479,10 @@ FROM product as p LEFT JOIN sales as s
 GROUP BY product_id
 ```
 
-# Question : Project Employees 1 
+# Question 1075: Project Employees 1 
 
 
-# Question : Project Employees 2 
+# Question 1076: Project Employees 2 
 
 ``` sql
 SELECT project_id
@@ -135,9 +495,9 @@ WHERE
 ``` 
 
 
-# Question : Queries quality and percentage
+# Question 1121: Queries quality and percentage
 
-# Question : Reformat department table 
+# Question 1179: Reformat department table 
 
 ``` sql
 -- PIVOT???? 
@@ -162,7 +522,7 @@ WHERE action_date = '2019-07-04' AND action = 'report'
 GROUP BY extra
 ```
 
-# Question : Sales Analysis 1
+# Question 1082: Sales Analysis 1
 
 ``` sql
 SELECT s.seller_id, SUM(p.unit*s.quantity) as total_sales 
@@ -175,7 +535,7 @@ LIMIT 1;
 --i just relize, no need join here, sum price and reorder it. 
 ```
 
-# Question : Sales Analysis 2   
+# Question 1083: Sales Analysis 2   
 
 ``` sql
 --????? 
@@ -192,7 +552,7 @@ FROM t as t1 JOIN t as t2
      
 ```
 
-# Question : Sales Analysis 3 
+# Question 1084: Sales Analysis 3 
 
 ``` sql
 SELET DISTINCT p.product_id, product_name 
@@ -201,10 +561,20 @@ FROM product as p INNER JOIN sales as s
 WHERE s.sale_date BETWEEN ('2019-01-01', '2019-03-31'); 
 ``` 
 
-# Question : Sales Person 
+# Question 607: Sales Person 
 
+``` sql 
+SELECT name 
+FROM salesperson 
+WHERE sales_id NOT IN 
+    (SELECT DISTINCT sales_id
+    FROM orders as o 
+         JOIN company as c 
+         ON c.com_id = o.com_id 
+    WHERE c.name = 'RED'); 
+```
 
-# Question : Shortest Distance 
+# Question 613: Shortest Distance in a line 
 
 ``` sql 
 SELECT min(abs(abs(p1.x) - abs(p2.x))) as minimum  
@@ -213,7 +583,7 @@ FROM points as p1 INNER JOIN points as p2
 ```
 
 
-# Question : Students and Examinations 
+# Question 1280: Students and Examinations 
 
 ``` sql
 --??????????? 
@@ -239,7 +609,7 @@ FROM students
 WHERE department_id NOT IN (SELECT id FROM departments); 
 ```
 
-# Question : Swap Salary 
+# Question 627: Swap Salary 
 
 ``` sql 
 UPDATE 
@@ -248,7 +618,7 @@ SET sex = CASE WHEN 'm' THEN 'f'
           END; 
 ```
 
-# Question : Triangle Judgment 
+# Question 610: Triangle Judgement 
 
 | x  | y  | z  |
 |----|----|----|
@@ -259,7 +629,6 @@ SET sex = CASE WHEN 'm' THEN 'f'
 SELECT x, y, z
        CASE 
            WHEN x+y > z and x+z > y and z+y > x THEN 'YES'
-           ELIF x = z AND z = y THEN 'YES'
            ELSE 'NO'
        END AS triangle
 FROM triangle; 
@@ -312,7 +681,7 @@ GROUP BY activity_date
 HAVING COUNT(DISTINCT user_id) > 0; 
 ```
 
-# Question : User activity for past 30 days 2 
+# Question 1142: User activity for past 30 days 2 
 
 Write an SQL query to find the average number of sessions per user for a period of 30 days ending 2019-07-27 inclusively, rounded to 2 decimal places. The sessions we want to count for a user are those with at least one activity in that time period.
 
@@ -496,7 +865,7 @@ FROM employee as e1 join employee as e2
      ON e1.managerid = e2.id
 WHERE e1.salary > e2.salary; 
 
--- equijoin 
+-- Non-equi join 
 SELECT e1.name 
 FROM employee as e1, 
      employee as e2
@@ -521,7 +890,7 @@ FROM person
 GROUP BY email 
 HAVING COUNT(*) > 1; 
             
--- self join
+-- Non-equi self join
 SELECT DISTINCT e1.email    
 FROM person as p1 JOIN person as p2 
      ON p1.email = p2.email 

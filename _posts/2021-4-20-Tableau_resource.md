@@ -1,5 +1,5 @@
 ---
-title: "Tableau"
+title: "Tableau Resource"
 tags: [Tableau]
 style: border
 color: primary
@@ -12,7 +12,7 @@ description: A list of resources of Tableau.
 
 1. Practical Tableau. 
 
-In processing, Im hoping i can finish reading it first time by the end of April, 2021. 
+In processing, I'm hoping i can finish reading it first time by the end of April, 2021. 
 
 2. Tableau for Dummies. 
 
@@ -64,3 +64,39 @@ Tree map is a visualization that nests rectangles in heirarchies so we can compa
 ![](/tableau/tree%20map%20.png)
 
 ## [**Sparklines**]()
+
+Sparklines are condensed graphs or charts that can be used in-line with text or grouped to show trends across different measures. It is an effective corporate chart types for qucikly communicating trends across KPIs. 
+
+![](/tableau/sparklines.png)
+
+
+## [**Small multiples**]()
+
+Small multiples are a group of charts or graphs that share the same axes and scales,
+which allows the user to compare trends across dimensions in a single view. 
+
+![](/tableau/small%20multiples.png) 
+
+
+## [**Bullet Graphs**]() 
+
+## [**Stacked Area Chart**]()
+
+## [**Histogram**]() 
+
+## [**Box-and-Whisker Plot**]()
+
+## [Symbol Map]()
+
+## [**Filled map**]()
+
+## [**Dual-axis Map**]()
+
+This type of map is useful any time when you want to combine two maps into one to help provide additional context that would not be available when showing one map. 
+
+## [**Map a Sequential Path**]()
+
+## [**Map Anything**]()
+
+
+
