@@ -22,7 +22,7 @@ Easy book introduces the basic features of tableau. Already finished.
 
 [Workout Wednesday](http://www.workout-wednesday.com/)
 
-[Learn Tableau](https://learningtableau.com/) 
+[Learn Tableau](https://learningtableau.com/)
 
 ## Type of charts in Tableau
 
